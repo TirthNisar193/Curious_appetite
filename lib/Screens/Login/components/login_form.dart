@@ -1,15 +1,30 @@
-// ignore_for_file: prefer_const_constructors
+//ignore_for_file: prefer_const_constructors
 
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
-
 import '../../../components/already_have_an_account_acheck.dart';
 import '../../../constants.dart';
 import '../../Signup/signup_screen.dart';
 
-class LoginForm extends StatelessWidget {
+final emailController = TextEditingController();
+final passwordController = TextEditingController();
+
+class LoginForm extends StatefulWidget {
   const LoginForm({
     Key? key,
   }) : super(key: key);
+
+  @override
+  State<LoginForm> createState() => _LoginFormState();
+}
+
+class _LoginFormState extends State<LoginForm> {
+  @override
+  void dispose() {
+    emailController.dispose();
+    passwordController.dispose();
+    super.dispose();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -17,10 +32,21 @@ class LoginForm extends StatelessWidget {
       child: Column(
         children: [
           TextFormField(
+            controller: emailController,
             keyboardType: TextInputType.emailAddress,
             textInputAction: TextInputAction.next,
             cursorColor: kPrimaryColor,
             onSaved: (email) {},
+            validator: (text) {
+                  if (text!.isEmpty) {
+                    return 'Enter the email.';
+                  }
+                  final regex = RegExp('[^@]+@[^/.]+.+');
+                  if (!regex.hasMatch(text)) {
+                    return 'Enter a valid email';
+                  }
+                  return null;
+                },
             decoration: InputDecoration(
               hintText: "Your email",
               prefixIcon: Padding(
@@ -32,6 +58,7 @@ class LoginForm extends StatelessWidget {
           Padding(
             padding: const EdgeInsets.symmetric(vertical: defaultPadding),
             child: TextFormField(
+              controller: passwordController,
               textInputAction: TextInputAction.done,
               obscureText: true,
               cursorColor: kPrimaryColor,
@@ -48,7 +75,7 @@ class LoginForm extends StatelessWidget {
           Hero(
             tag: "login_btn",
             child: ElevatedButton(
-              onPressed: () {},
+              onPressed: signIn,
               child: Text(
                 "Login".toUpperCase(),
               ),
@@ -71,4 +98,11 @@ class LoginForm extends StatelessWidget {
       ),
     );
   }
+}
+
+Future signIn() async {
+  await FirebaseAuth.instance.signInWithEmailAndPassword(
+    email: emailController.text.trim(),
+    password: passwordController.text.trim(),
+  );
 }

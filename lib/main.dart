@@ -1,8 +1,14 @@
 import 'package:flutter/material.dart';
-import 'package:mine/Screens/Welcome/welcome_screen.dart';
+import 'package:mine/Screens/NavPages/components/navbar.dart';
+//import 'package:mine/Screens/Welcome/welcome_screen.dart';
 import 'package:mine/constants.dart';
+import 'package:firebase_core/firebase_core.dart';
 
-void main() => runApp(const MyApp());
+Future main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+  await Firebase.initializeApp();
+  runApp(const MyApp());
+}
 
 class MyApp extends StatelessWidget {
   const MyApp({Key? key}) : super(key: key);
@@ -12,7 +18,7 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
-      title: 'Flutter Auth',
+      title: 'Curious Appetite',
       theme: ThemeData(
           primaryColor: kPrimaryColor,
           scaffoldBackgroundColor: Colors.white,
@@ -37,7 +43,12 @@ class MyApp extends StatelessWidget {
               borderSide: BorderSide.none,
             ),
           )),
-      home: const WelcomeScreen(),
+      home: const NavBar(),
     );
   }
 }
+/*Widget build(BuildContext context) => Scaffold(
+  body: StreamBuilder<User?>(
+    stream: ,
+  )
+) */

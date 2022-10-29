@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "949392176379",
+    "project_id": "curious-appetite",
+    "storage_bucket": "curious-appetite.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:949392176379:android:2252148aac8599b69aec5e",
+        "android_client_info": {
+          "package_name": "com.example.mine"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "949392176379-8a1gaqqdk47o3h66gs4flfoo6v5fu9qj.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDIbpjN6gbzrSpNfcDQ2Zb_t0xmRnvARlg"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "949392176379-8a1gaqqdk47o3h66gs4flfoo6v5fu9qj.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
