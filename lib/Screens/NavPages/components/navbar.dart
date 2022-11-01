@@ -13,17 +13,17 @@ class NavBar extends StatefulWidget {
 
 class _NavBarState extends State<NavBar> {
   int _currentIndex = 0;
-  List<Widget> pages = <Widget> [
-    homescreen(),
-    search_page(),
-    favorites(),
-    add_to_menu(),
+  List<Widget> pages = const <Widget> [
+    HomeScreen(),
+    SearchPage(),
+    Favorites(),
+    AddToMenu(),
   ];
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('CURIOUS APEETITE'),
+        title: const Text('CURIOUS APETITE'),
       ),
       body: Center(
         child: pages[_currentIndex],

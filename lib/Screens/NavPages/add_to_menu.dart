@@ -1,10 +1,14 @@
+// ignore_for_file: prefer_const_constructors
+
 import 'package:flutter/material.dart';
 
-class add_to_menu extends StatelessWidget {
-  const add_to_menu({super.key});
+class AddToMenu extends StatelessWidget {
+  const AddToMenu({super.key});
 
   @override
   Widget build(BuildContext context) {
-    return Container();
+    return Scaffold(
+      backgroundColor: Color.fromARGB(255, 108, 64, 205),
+    );
   }
 }

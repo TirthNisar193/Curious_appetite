@@ -1,6 +1,8 @@
 //ignore_for_file: prefer_const_constructors
-
 import 'package:flutter/material.dart';
+import 'package:mine/Screens/NavPages/profile_page.dart';
+
+import '../settings.dart';
 
 class Drawer extends StatelessWidget {
   const Drawer({super.key, required ListView child});
@@ -36,7 +38,7 @@ class Drawer extends StatelessWidget {
           ListTile(
             leading: Icon(Icons.person),
             title: Text('Friends'),
-            onTap: () => null,
+            onTap: () => ProfilePage(),
           ),
           ListTile(
             leading: Icon(Icons.share),
@@ -45,13 +47,13 @@ class Drawer extends StatelessWidget {
           ),
           ListTile(
             leading: Icon(Icons.notifications),
-            title: Text('Request'),
+            title: Text('Notifications'),
           ),
           Divider(),
           ListTile(
             leading: Icon(Icons.settings),
             title: Text('Settings'),
-            onTap: () => null,
+            onTap: () => Settings(),
           ),
           ListTile(
             leading: Icon(Icons.description),
