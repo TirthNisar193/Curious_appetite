@@ -1,11 +1,12 @@
 //ignore_for_file: prefer_const_constructors
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:mine/Screens/NavPages/profile_page.dart';
 
 import '../settings.dart';
 
-class Drawer extends StatelessWidget {
-  const Drawer({super.key, required ListView child});
+class DrawerMenu extends StatelessWidget {
+  const DrawerMenu({super.key, ListView? child});
 
   @override
   Widget build(BuildContext context) {
@@ -64,7 +65,7 @@ class Drawer extends StatelessWidget {
           ListTile(
             title: Text('Exit'),
             leading: Icon(Icons.exit_to_app),
-            onTap: () => null,
+            onTap: () => FirebaseAuth.instance.signOut(),
           ),
         ],
       ),

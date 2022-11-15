@@ -38,15 +38,15 @@ class _LoginFormState extends State<LoginForm> {
             cursorColor: kPrimaryColor,
             onSaved: (email) {},
             validator: (text) {
-                  if (text!.isEmpty) {
-                    return 'Enter the email.';
-                  }
-                  final regex = RegExp('[^@]+@[^/.]+.+');
-                  if (!regex.hasMatch(text)) {
-                    return 'Enter a valid email';
-                  }
-                  return null;
-                },
+              if (text!.isEmpty) {
+                return 'Enter the email.';
+              }
+              final regex = RegExp('[^@]+@[^/.]+.+');
+              if (!regex.hasMatch(text)) {
+                return 'Enter a valid email';
+              }
+              return null;
+            },
             decoration: InputDecoration(
               hintText: "Your email",
               prefixIcon: Padding(
@@ -101,8 +101,12 @@ class _LoginFormState extends State<LoginForm> {
 }
 
 Future signIn() async {
-  await FirebaseAuth.instance.signInWithEmailAndPassword(
-    email: emailController.text.trim(),
-    password: passwordController.text.trim(),
-  );
+  try {
+    await FirebaseAuth.instance.signInWithEmailAndPassword(
+      email: emailController.text.trim(),
+      password: passwordController.text.trim(),
+    );
+  } on FirebaseAuthException catch (e) {
+    debugPrint(e.toString());
+  }
 }

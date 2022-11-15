@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:mine/Screens/NavPages/add_to_menu.dart';
+import 'package:mine/Screens/NavPages/components/hamburger_menu.dart';
 import 'package:mine/Screens/NavPages/favorites.dart';
 import 'package:mine/Screens/NavPages/homescreen.dart';
 import 'package:mine/Screens/NavPages/search_page.dart';
@@ -24,7 +25,10 @@ class _NavBarState extends State<NavBar> {
     return Scaffold(
       appBar: AppBar(
         title: const Text('CURIOUS APETITE'),
+        /*leading: IconButton(icon: const Icon(Icons.menu),
+        onPressed:() => const DrawerMenu(),),*/
       ),
+      drawer: const DrawerMenu(),
       body: Center(
         child: pages[_currentIndex],
       ),
