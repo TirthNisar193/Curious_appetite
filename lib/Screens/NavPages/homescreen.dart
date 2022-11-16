@@ -1,14 +1,11 @@
 // ignore_for_file: prefer_const_constructors
-//import 'dart:collection';
-// 'dart:convert';
-//import 'package:http/http.dart' as http;
+
 import 'package:flutter/material.dart';
 import 'package:mine/Models/model1.dart';
 import 'package:mine/Models/getapi.dart';
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({Key? key}) : super(key: key);
-
   @override
   State<HomeScreen> createState() => _HomeScreenState();
 }
@@ -34,34 +31,19 @@ class _HomeScreenState extends State<HomeScreen> {
           child: FutureBuilder(
             future: getRecipeData(),
             builder: (context, snapshot) {
-              if (!snapshot.hasData) {
+              if (snapshot.connectionState == ConnectionState.waiting) {
                 return Text("LOADING");
               } else {
                 return ListView.builder(
                     itemCount: recipelist.length,
                     itemBuilder: (BuildContext context, int index) {
                       Recipes recipe = recipelist[index];
+                      print(recipe.title);
                       return RecipeWidget(
                         title: recipe.title!,
                         imgUrl: recipe.image!,
-                        isVeg: recipe.vegetarian!,
+                        isVeg: recipe.vegetarian,
                       );
-                      /*return Card(
-                        child: Padding(
-                          padding: const EdgeInsets.all(8.0),
-                          child: Column(
-                            mainAxisAlignment: MainAxisAlignment.start,
-                            crossAxisAlignment: CrossAxisAlignment.start,
-                            children: const [
-                              Text(
-                                "Recipes",
-                                style: TextStyle(
-                                    fontSize: 20, fontWeight: FontWeight.w600),
-                              )
-                            ],
-                          ),
-                        ),
-                      );*/
                     });
               }
             },
@@ -121,3 +103,19 @@ class RecipeWidget extends StatelessWidget {
     );
   }
 }
+/*return Card(
+                        child: Padding(
+                          padding: const EdgeInsets.all(8.0),
+                          child: Column(
+                            mainAxisAlignment: MainAxisAlignment.start,
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: const [
+                              Text(
+                                "Recipes",
+                                style: TextStyle(
+                                    fontSize: 20, fontWeight: FontWeight.w600),
+                              )
+                            ],
+                          ),
+                        ),
+                      );*/

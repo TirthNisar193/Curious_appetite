@@ -1,11 +1,10 @@
-// ignore_for_file: prefer_const_constructors
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:mine/Screens/NavPages/components/navbar.dart';
-//import 'package:mine/Screens/NavPages/homescreen.dart';
 import 'package:mine/Screens/Welcome/welcome_screen.dart';
 import 'package:mine/constants.dart';
 import 'package:firebase_core/firebase_core.dart';
+
 Future main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await Firebase.initializeApp();
@@ -43,24 +42,24 @@ class MyApp extends StatelessWidget {
                 borderSide: BorderSide.none,
               ),
             )),
-        home: NavBar());
+        home: Main());
   }
 }
 
+// ignore: use_key_in_widget_constructors
 class Main extends StatelessWidget {
-  const Main({super.key});
   @override
   Widget build(BuildContext context) => StreamBuilder<User?>(
       stream: FirebaseAuth.instance.authStateChanges(),
       builder: (context, snapshot) {
         if (snapshot.connectionState == ConnectionState.waiting) {
-          return Center(child: CircularProgressIndicator());
+          return const Center(child: CircularProgressIndicator());
         } else if (snapshot.hasError) {
-          return Center(child: Text('Something went wromng!'));
+          return const Center(child: Text('Something went wrong!'));
         } else if (snapshot.hasData) {
-          return NavBar();
+          return const NavBar();
         } else {
-          return WelcomeScreen();
+          return const WelcomeScreen();
         }
       });
 }
