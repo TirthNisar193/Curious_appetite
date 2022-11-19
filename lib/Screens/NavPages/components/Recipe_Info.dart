@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_html/flutter_html.dart' show Html;
 
 // ignore: must_be_immutable
 class RecipeInfo extends StatelessWidget {
@@ -32,9 +33,8 @@ class RecipeInfo extends StatelessWidget {
             title,
             style: const TextStyle(fontSize: 30.0, fontWeight: FontWeight.w500),
           ),
-          Text(
-            summary,
-            style: const TextStyle(fontWeight: FontWeight.w400, fontSize: 10.0),
+          Html(
+            data: summary,
           )
         ],
       )),

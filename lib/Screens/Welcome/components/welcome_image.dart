@@ -1,8 +1,6 @@
 // ignore_for_file: prefer_const_constructors
 
 import 'package:flutter/material.dart';
-import 'package:flutter_svg/flutter_svg.dart';
-
 import '../../../constants.dart';
 
 class WelcomeImage extends StatelessWidget {
@@ -24,7 +22,7 @@ class WelcomeImage extends StatelessWidget {
             Spacer(),
             Expanded(
               flex: 8,
-              child: SvgPicture.asset(
+              child: Image.asset(
                 "assets/icons/chat.svg",
               ),
             ),
