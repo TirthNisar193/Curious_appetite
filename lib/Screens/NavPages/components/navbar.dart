@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:mine/Screens/NavPages/add_to_menu.dart';
 import 'package:mine/Screens/NavPages/components/hamburger_menu.dart';
 import 'package:mine/Screens/NavPages/favorites.dart';
 import 'package:mine/Screens/NavPages/homescreen.dart';
@@ -18,7 +17,6 @@ class _NavBarState extends State<NavBar> {
     HomeScreen(),
     SearchPage(),
     Favorites(),
-    AddToMenu(),
   ];
   @override
   Widget build(BuildContext context) {
@@ -27,6 +25,15 @@ class _NavBarState extends State<NavBar> {
         title: const Text('CURIOUS APETITE'),
         /*leading: IconButton(icon: const Icon(Icons.menu),
         onPressed:() => const DrawerMenu(),),*/
+        actions: <Widget> [IconButton(
+                onPressed: () {
+                  showSearch(
+                    context: context,
+                    delegate: CustomSearchDelegate(),
+                  );
+                },
+                icon: Icon(Icons.search),
+              ),]
       ),
       drawer: const DrawerMenu(),
       body: Center(
@@ -54,11 +61,6 @@ class _NavBarState extends State<NavBar> {
             selectedIcon: Icon(Icons.favorite),
             icon: Icon(Icons.favorite_border_outlined),
             label: 'FAVORITE',
-          ),
-          NavigationDestination(
-            selectedIcon: Icon(Icons.add_box_rounded),
-            icon: Icon(Icons.add),
-            label: 'ADD',
           ),
         ],
       ),

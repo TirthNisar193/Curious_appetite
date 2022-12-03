@@ -17,7 +17,7 @@ class _HomeScreenState extends State<HomeScreen> {
   List<Recipes> recipelist = [];
   getRecipeData() async {
     recipelist = await ApiServices().getData();
-    print(recipelist.length);
+    debugPrint(recipelist.length.toString());
   }
 
   @override
@@ -41,7 +41,7 @@ class _HomeScreenState extends State<HomeScreen> {
                     itemCount: recipelist.length,
                     itemBuilder: (BuildContext context, int index) {
                       Recipes recipe = recipelist[index];
-                      print(recipe.title);
+                      debugPrint(recipe.title);
                       return RecipeWidget(
                         title: recipe.title!,
                         imgUrl: recipe.image!,

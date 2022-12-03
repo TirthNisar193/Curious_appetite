@@ -1,12 +1,10 @@
 //ignore_for_file: prefer_const_constructors
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:mine/Screens/Signup/components/signup_form.dart';
 import '../../../components/already_have_an_account_acheck.dart';
 import '../../../constants.dart';
 import '../../Signup/signup_screen.dart';
-
-final emailController = TextEditingController();
-final passwordController = TextEditingController();
 
 class LoginForm extends StatefulWidget {
   const LoginForm({
@@ -16,7 +14,8 @@ class LoginForm extends StatefulWidget {
   @override
   State<LoginForm> createState() => _LoginFormState();
 }
-
+  final emailController = TextEditingController();
+  final passwordController = TextEditingController();
 class _LoginFormState extends State<LoginForm> {
   @override
   void dispose() {
@@ -87,7 +86,7 @@ class _LoginFormState extends State<LoginForm> {
                 context,
                 MaterialPageRoute(
                   builder: (context) {
-                    return SignUpScreen();
+                    return SignUpForm();
                   },
                 ),
               );

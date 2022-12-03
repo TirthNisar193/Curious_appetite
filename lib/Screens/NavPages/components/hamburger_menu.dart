@@ -1,4 +1,4 @@
-//ignore_for_file: prefer_const_constructors
+//ignore_for_file: prefer_const_constructors, avoid_returning_null_for_void
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:mine/Screens/NavPages/profile_page.dart';

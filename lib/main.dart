@@ -1,6 +1,7 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:mine/Screens/NavPages/components/navbar.dart';
+import 'package:mine/Screens/Signup/components/signup_form.dart';
 import 'package:mine/Screens/Welcome/welcome_screen.dart';
 import 'package:mine/constants.dart';
 import 'package:firebase_core/firebase_core.dart';
@@ -17,7 +18,7 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
         debugShowCheckedModeBanner: false,
-        title: 'Curious Appetite',
+        title: 'Curious Appetite' ,
         theme: ThemeData(
             primaryColor: kPrimaryColor,
             scaffoldBackgroundColor: Colors.white,
@@ -47,19 +48,24 @@ class MyApp extends StatelessWidget {
 }
 
 // ignore: use_key_in_widget_constructors
-class Main extends StatelessWidget {
+class Main extends StatefulWidget {
+  const Main({super.key});
+
   @override
-  Widget build(BuildContext context) => StreamBuilder<User?>(
-      stream: FirebaseAuth.instance.authStateChanges(),
-      builder: (context, snapshot) {
-        if (snapshot.connectionState == ConnectionState.waiting) {
-          return const Center(child: CircularProgressIndicator());
-        } else if (snapshot.hasError) {
-          return const Center(child: Text('Something went wrong!'));
-        } else if (snapshot.hasData) {
-          return const NavBar();
-        } else {
-          return const WelcomeScreen();
-        }
-      });
+  State<Main> createState() => _MainState();
+}
+
+class _MainState extends State<Main> {
+  @override
+  Widget build(BuildContext context) => Scaffold(
+        body: StreamBuilder<User?>(
+        stream: FirebaseAuth.instance.authStateChanges(),
+        builder: (context, snapshot) {
+          if (snapshot.hasData) {
+            return const NavBar();
+          } else {
+            return const WelcomeScreen();
+          }
+        }),
+  );
 }

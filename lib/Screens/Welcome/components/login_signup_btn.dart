@@ -1,10 +1,10 @@
 // ignore_for_file: prefer_const_constructors
 
 import 'package:flutter/material.dart';
+import 'package:mine/Screens/Signup/components/signup_form.dart';
 
 import '../../../constants.dart';
 import '../../Login/login_screen.dart';
-import '../../Signup/signup_screen.dart';
 
 class LoginAndSignupBtn extends StatelessWidget {
   const LoginAndSignupBtn({
@@ -43,7 +43,7 @@ class LoginAndSignupBtn extends StatelessWidget {
               MaterialPageRoute(
                 builder: (context) {
                   
-                  return SignUpScreen();
+                  return SignUpForm();
                 },
               ),
             );

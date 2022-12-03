@@ -91,6 +91,7 @@ class Recipes {
   late final List<dynamic> occasions;
   late final String? instructions;
   late final List<AnalyzedInstructions> analyzedInstructions;
+  // ignore: prefer_void_to_null
   late final Null originalId;
   late final String? spoonacularSourceUrl;
 

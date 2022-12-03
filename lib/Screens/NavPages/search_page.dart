@@ -11,31 +11,6 @@ class SearchPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: Padding(
-        padding: const EdgeInsets.all(8.0),
-        child: Column(children: [
-          TextField(
-            decoration: InputDecoration(
-              contentPadding:
-                  const EdgeInsets.symmetric(vertical: 10.0, horizontal: 15),
-              hintText: "Search",
-              suffixIcon: IconButton(
-                onPressed: () {
-                  showSearch(
-                    context: context,
-                    delegate: CustomSearchDelegate(),
-                  );
-                },
-                icon: Icon(Icons.search),
-              ),
-              border: OutlineInputBorder(
-                borderRadius: BorderRadius.circular(20.0),
-                borderSide: const BorderSide(),
-              ),
-            ),
-          ),
-        ]),
-      ),
     );
   }
 }
@@ -81,7 +56,7 @@ class CustomSearchDelegate extends SearchDelegate {
                 title: recipe.title!,
                 imgUrl: recipe.image!,
                 isVeg: recipe.vegetarian,
-                summary: '',
+                summary: recipe.summary.toString(),
                 time: recipe.cookingMinutes,
               );
             },
